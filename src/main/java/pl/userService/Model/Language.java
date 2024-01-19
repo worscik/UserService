@@ -2,7 +2,13 @@ package pl.userService.Model;
 
 public enum Language {
 
-    ENG,
-    PL;
+    PL("PL"),
+    ENG("ENG");
+
+    Language(String pl) {
+    }
+
+
+
 
 }

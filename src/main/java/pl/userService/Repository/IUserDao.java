@@ -12,7 +12,7 @@ public interface IUserDao {
 
     UserDto deleteUser(UserRequest userRequest);
 
-    UserDto findUserById(int id);
+    UserEntity findUserById(int id);
 
 
 }

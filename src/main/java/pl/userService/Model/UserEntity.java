@@ -1,9 +1,6 @@
 package pl.userService.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -14,7 +11,9 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "externalId", unique = true)
     private UUID externalId;
+    @Column(name = "login", unique = true)
     private String login;
     private String name;
     private LocalDate createdOn;
