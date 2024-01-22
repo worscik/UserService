@@ -4,26 +4,26 @@ import java.util.UUID;
 
 public class UserDto {
 
-    private UUID externalId;
+    private long id;
     private String login;
     private String name;
 
-    private UserDto(UUID externalId, String login, String name) {
-        this.externalId = externalId;
+    private UserDto(long id, String login, String name) {
+        this.id = id;
         this.login = login;
         this.name = name;
     }
 
-    public static UserDto create(UUID externalId, String login, String name) {
-        return new UserDto(externalId,login,name);
+    public static UserDto create(long id, String login, String name) {
+        return new UserDto(id,login,name);
     }
 
-    public UUID getExternalId() {
-        return externalId;
+    public long getId() {
+        return id;
     }
 
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {

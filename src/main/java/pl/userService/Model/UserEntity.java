@@ -1,5 +1,6 @@
 package pl.userService.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,39 +16,48 @@ public class UserEntity {
     private UUID externalId;
     @Column(name = "login", unique = true)
     private String login;
+    @JsonIgnore
+    private String password;
     private String name;
     private LocalDate createdOn;
     private LocalDate modifyOn;
     private int version;
     private Language language;
+    private UserRole userRole;
 
     private UserEntity() {
     }
 
     private UserEntity(UUID externalId,
                        String login,
+                       String password,
                        String name,
                        LocalDate createdOn,
                        LocalDate modifyOn,
                        int version,
-                       Language language) {
+                       Language language,
+                       UserRole userRole) {
         this.externalId = externalId;
         this.login = login;
+        this.password = password;
         this.name = name;
         this.createdOn = createdOn;
         this.modifyOn = modifyOn;
         this.version = version;
         this.language = language;
+        this.userRole = userRole;
     }
 
     public static UserEntity create(UUID externalId,
                                     String login,
+                                    String password,
                                     String name,
                                     LocalDate createdOn,
                                     LocalDate modifyOn,
                                     int version,
-                                    Language language) {
-        return new UserEntity(externalId, login, name, createdOn, modifyOn, version, language);
+                                    Language language,
+                                    UserRole userRole) {
+        return new UserEntity(externalId, login, password, name, createdOn, modifyOn, version, language, userRole);
     }
 
     public long getId() {
@@ -112,5 +122,21 @@ public class UserEntity {
 
     public void setLanguage(Language language) {
         this.language = language;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 }

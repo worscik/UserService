@@ -7,15 +7,15 @@ public class UserRequest {
     private LocalDate createdOn;
     private String name;
     private String login;
+    private String password;
+    private UserRole userRole;
 
-    private UserRequest(LocalDate createdOn, String name, String login) {
+    public UserRequest(LocalDate createdOn, String name, String login, String password,UserRole userRole) {
         this.createdOn = createdOn;
         this.name = name;
         this.login = login;
-    }
-
-    public static UserRequest create(LocalDate createdOn, String name, String login){
-        return new UserRequest(createdOn,name,login);
+        this.password = password;
+        this.userRole = userRole;
     }
 
     public LocalDate getCreatedOn() {
@@ -40,5 +40,21 @@ public class UserRequest {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 }
